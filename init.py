@@ -1,9 +1,9 @@
+import email
 from venmo_api import Client
 from dotenv import load_dotenv
-from notifiers import get_notifier
 from datetime import datetime
 
-from utils import get_env, env_vars, get_month, Venmo, Telegram
+from utils import get_env, env_vars, get_month, Venmo, Gmail
 
 def main(now):
   """
@@ -15,25 +15,17 @@ def main(now):
   for var in env_vars:
     actualVars.append(get_env(var))
 
-  access_token, chat_id, bot_token, k_friend_id, c_friend_id, w_friend_id, j_friend_id = actualVars
+  access_token, gmail_app_password, email_sender, email_recipient, e_friend_id = actualVars
 
   month = get_month(now)
   venmo = Venmo(access_token)
-  telegram = Telegram(bot_token, chat_id)
+  gmail = Gmail(email_sender)
 
   friends =[
     {
-      "name": "KRam",
-      "id": k_friend_id,
-    },
-    {
-      "name": "Chrissy",
-      "id": c_friend_id,
-    },
-    {
-      "name": "Will",
-      "id": w_friend_id,
-    },
+      "name": "Evie",
+      "id": e_friend_id,
+    }
   ]
 
   successfulRequests = []
@@ -42,15 +34,14 @@ def main(now):
   for friend in friends:
     name = friend["name"]
     id = friend["id"]
-    description = "Spotify for the month of " + month + "— Sent by Joe's Assistant Efron 🤵🏻‍♂️"
+    description = "Test request for the month of " + month + "— Sent by Cory's Assistant Efron 🤵🏻‍♂️"
     amount = 3.00
+    subject = f"Venmo request for {name}"
     message = f"""Good news old sport!
-
 I have successfully requested money from {name}.
-
 — Efron 🤵🏻‍♂️
     """
-    success = venmo.request_money(id, amount, description, telegram.send_message(message))
+    success = venmo.request_money(id, amount, description, gmail.send_message(email_recipient, email_sender, gmail_app_password, subject, message))
     if success:
       successfulRequests.append(success)
 
