@@ -35,7 +35,7 @@ def main(now):
     name = friend["name"]
     id = friend["id"]
     description = "Test request for the month of " + month + "— Sent by Tamra's Assistant Efron 🤵🏻‍♂️"
-    amount = 30.00
+    amount = 3.00
     subject = f"Venmo request for {name}"
     message = f"""Good news old sport!
 I have successfully requested money from {name}.
