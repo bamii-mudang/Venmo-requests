@@ -23,7 +23,7 @@ def main(now):
 
   friends =[
     {
-      "name": "Evie",
+      "name": "Anna",
       "id": e_friend_id,
     }
   ]
@@ -34,8 +34,8 @@ def main(now):
   for friend in friends:
     name = friend["name"]
     id = friend["id"]
-    description = "Test request for the month of " + month + "— Sent by Cory's Assistant Efron 🤵🏻‍♂️"
-    amount = 3.00
+    description = "Test request for the month of " + month + "— Sent by Tamra's Assistant Efron 🤵🏻‍♂️"
+    amount = 30.00
     subject = f"Venmo request for {name}"
     message = f"""Good news old sport!
 I have successfully requested money from {name}.
