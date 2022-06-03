@@ -37,9 +37,9 @@ def main(now):
     description = "Test request for the month of " + month + "— Sent by Tamra's Assistant Efron 🤵🏻‍♂️"
     amount = 3.00
     subject = f"Venmo request for {name}"
-    message = f"""Good news old sport!
+    message = f"""Good news everyone!
 I have successfully requested money from {name}.
-— Efron 🤵🏻‍♂️
+— Professor Farnsworth
     """
     success = venmo.request_money(id, amount, description, gmail.send_message(email_recipient, email_sender, gmail_app_password, subject, message))
     if success:
